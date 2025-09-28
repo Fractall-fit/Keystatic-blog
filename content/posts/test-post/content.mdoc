@@ -1,0 +1,374 @@
+# Test Blog — Markdown Formatting Playground
+
+*A comprehensive **Markdown** sample post with nearly every formatting feature you might want to test in a blog generator.*
+
+```yaml
+---
+title: "Markdown Formatting Playground"
+date: 2025-09-28
+author: "Test Author"
+tags: ["md", "test", "formats", "generator"]
+summary: "A single-page testbed containing headings, lists, code, tables, images, math, HTML, and more."
+draft: false
+---
+```
+
+---
+
+## Table of contents
+
+1. [Headings & inline styles](#headings--inline-styles)
+1. [Lists (ordered, unordered, nested, task)](#lists)
+1. [Code (inline, fenced, syntax-highlighted)](#code)
+1. [Blockquotes & callouts](#blockquotes--callouts)
+1. [Tables](#tables)
+1. [Links, images, reference links](#links--images)
+1. [HTML passthrough & extra tags](#html-passthrough)
+1. [Math (LaTeX)](#math-latex)
+1. [Footnotes, abbreviations, definitions](#footnotes-abbreviations-definitions)
+1. [Extras: comments, anchors, metadata](#extras)
+
+---
+
+## Headings & inline styles
+
+# H1 — Page title
+
+## H2 — Section
+
+### H3 — Subsection
+
+#### H4 — Smaller heading
+
+##### H5 — Tiny heading
+
+###### H6 — Minuscule heading
+
+Paragraph text with **bold**, *italic*, ***bold italic***, ~~strikethrough~~, and `inline code`.\
+Mixed: **bold *with italic inside*** and *italic **with bold inside***.
+
+Emphasis variations:
+
+- UPPERCASE
+- `monospace`
+- small caps simulation: <small>small text</small>
+
+Special textual tokens for parser testing: `@username`, `#hashtag`, and `~tilde~`.
+
+---
+
+## Lists
+
+### Unordered
+
+- Bullet level 1
+  - Bullet level 2
+    - Bullet level 3
+- Item with **bold** text and `code`.
+
+### Ordered
+
+1. First
+1. Second
+   1. Second.a
+   1. Second.b
+1. Third
+
+### Mixed & nested
+
+- Parent
+  1. Child ordered
+     - Child unordered
+     - Child unordered 2
+  1. Child ordered 2
+
+### Task list
+
+- [x] Completed task
+- [ ] Incomplete task
+- [ ] Task with `inline code`
+
+---
+
+## Code
+
+Inline code: `Use`backticks`inside` (use double backticks to include single backticks).
+
+### Fenced code block (JavaScript)
+
+```javascript
+// example.js
+function greet(name) {
+  console.log(`Hello, ${name}!`);
+}
+greet("World");
+```
+
+### Fenced code block (Python)
+
+```python
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = b, a + b
+    return a
+
+print(fib(10))  # => 55
+```
+
+### Raw backticks fence test
+
+````markdown
+```triple-backtick-inside
+This fence contains triple-backticks in its body
+```
+````
+
+### Command block (shell)
+
+```bash
+# install
+pip install mypackage==1.2.3
+```
+
+---
+
+## Blockquotes & callouts
+
+> **Note:** This is a top-level blockquote.
+> 
+> > Nested quote (level 2) with a list:
+> 
+> - Quote list item 1
+
+- Quote list item 2
+
+> And a code block inside a quote:
+> 
+> ```text
+```
+
+quoted code snippet
+
+````
+
+> **Callout**: Use this for warnings or highlights.
+
+---
+
+## Tables
+
+Basic table:
+
+{% table %}
+- Feature
+- Works?
+- Notes
+---
+- Bold
+- ✓
+- `**bold**`
+---
+- Italic
+- ✓
+- `*italic*`
+---
+- Inline code
+- ✓
+- ``code``
+---
+- Multi-line cell
+- ✓
+- See below
+{% /table %}
+
+Multiline cell example:
+
+{% table %}
+- Name
+- Description
+---
+- Multiline
+- Line 1<br>Line 2<br>- list inside cell<br>`code`
+{% /table %}
+
+Alignment:
+
+{% table %}
+- Left align
+- Center align
+- Right align
+---
+- left
+- center
+- right
+---
+- a
+- b
+- c
+{% /table %}
+
+---
+
+## Links & Images
+
+Inline link: [OpenAI](https://openai.com)\
+Reference-style link: [ref-link](https://example.com)
+
+Image inline (with alt text and title):
+![Placeholder image alt text](https://via.placeholder.com/600x150.png?text=Markdown+Test "Placeholder Title")
+
+Image reference:
+![ref-img](https://via.placeholder.com/300 "Small placeholder")
+
+HTML image tag (to test passthrough):
+<img src="https://via.placeholder.com/80" alt="tiny" title="tiny" />
+
+---
+
+## HTML passthrough & extra tags
+
+You can include raw HTML — useful for testing rich content:
+
+<div style="border:1px dashed #ccc; padding:8px;">
+<strong>HTML block:</strong>
+<p>This <em>paragraph</em> includes an inline <kbd>Ctrl</kbd> + <kbd>C</kbd> and a <mark>highlight</mark>.</p>
+<figure>
+<img src="https://via.placeholder.com/120" alt="fig">
+<figcaption>Figure caption text</figcaption>
+</figure>
+</div>
+
+Keyboard and inline formatting: `<kbd>Esc</kbd>`, `<sup>superscript</sup>`, `<sub>subscript</sub>`.
+
+Collapsible details (GitHub/HTML supported):
+<details>
+<summary>Click to expand — details element</summary>
+This content is hidden by default and useful for spoilers or long notes.
+</details>
+
+Horizontal rules:
+
+---
+
+---
+
+---
+
+---
+
+## Math (LaTeX)
+
+Inline: Euler's identity (e^{i\pi} + 1 = 0).\
+Block:
+
+$$
+\int_{0}^{\infty} e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+$$
+
+(Use a renderer like MathJax or KaTeX to test display.)
+
+---
+
+## Footnotes, abbreviations, definitions
+
+Here is a sentence with a footnote.[^fn1]
+
+[^fn1]: This is the footnote content. Footnotes can contain **formatting** and lists:
+- item 1
+- item 2
+
+Abbreviation: HTML-style `<abbr title="HyperText Markup Language">HTML</abbr>` and markdown-ish `*[HTML]: HyperText Markup Language` (some renderers support an abbreviation extension).
+
+Definition list (HTML — many markdown parsers support custom syntax; here we show HTML to be safe):
+
+<dl>
+<dt>Term A</dt>
+<dd>Definition of term A — may include <strong>bold</strong> text and a list:
+<ul><li>point 1</li><li>point 2</li></ul>
+</dd>
+<dt>Term B</dt>
+<dd>Second definition</dd>
+</dl>
+
+---
+
+## Extras
+
+### HTML comments (should be invisible)
+
+<!-- This is a HTML comment. Your generator should ignore this. -->
+
+### Anchor links (explicit)
+
+Jump to [Tables](#tables) or [Code](#code).
+
+### Metadata test (YAML already at top) — also show JSON block:
+
+```json
+{
+  "title": "Test Blog",
+  "published": true,
+  "views": 0
+}
+````
+
+### Emojis and special chars
+
+🙂 😢 🚀 — Also colon-style: :smile: :rocket:
+
+### Long paragraph (wrap test)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.
+
+### Large code sample (C)
+
+```c
+/* hello.c */
+#include <stdio.h>
+int main(void) {
+    printf("Hello, world!\n");
+    return 0;
+}
+```
+
+### CSV block (for importers)
+
+```csv
+id,name,email
+1,Alice,alice@example.com
+2,Bob,bob@example.com
+```
+
+---
+
+## Accessibility & edge cases
+
+- Zero-width space: `ZWSP` → `\u200B` (some renderers strip)
+- Non-breaking space: `&nbsp;` inside HTML blocks
+- Long unbroken strings to test wrapping: `aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`
+- Mixed newline styles: LF and CRLF (can't show both here, but include extra blank lines)
+
+---
+
+## Final test checklist
+
+- [ ] Headings (all levels)
+- [ ] Bold / italic / strikethrough
+- [ ] Inline code + fenced code (many languages)
+- [ ] Blockquotes, nested blockquotes
+- [ ] Ordered, unordered, nested lists
+- [ ] Task lists
+- [ ] Tables with alignment + multiline cells
+- [ ] Images (inline, reference, HTML)
+- [ ] Links (inline, reference, title attribute)
+- [ ] Raw HTML passthrough (`<kbd>`, `<mark>`, `<figure>`, `<details>`)
+- [ ] Math (inline + block)
+- [ ] Footnotes & definitions
+- [ ] YAML front matter + JSON block
+- [ ] Emojis, mentions, hashtags
+- [ ] Comments and invisible content
+- [ ] Collapsible sections
+- [ ] CSV and other data blocks
+
+---
